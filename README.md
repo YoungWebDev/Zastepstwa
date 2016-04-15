@@ -8,4 +8,16 @@ W przyszłości zamierzam dodać do niego filtrowanie po klasach, czyli załóż
 
 #### Wykorzystanie
 
-##### TODO
+##### Bindowanie zmian: 
+
+Łącze: *link/status/ **[day]** / **[sessionID]***
+Parametry: ***[day]*** * - today* lub *tomorrow*, ***[sessionID]*** - info na dole
+Wiadomości zwrotne: ***0 lub 1***
+
+##### Wczytywanie zwolnień: 
+
+Łącze: *link/scrape/ **[day]** / **[sessionID]***
+Parametry: ***[day]*** * - today* lub *tomorrow*, ***[sessionID]*** - info na dole
+Wiadomości zwrotne: ***0 lub 1***
+
+**sessionID**: Tutaj podajesz jakieś ID, tak aby aplikacja potem wiedziała czy już brałeś dane czy nie z danego telefonu (appki mobilnej). Aby bindowanie zmian działało poprawnie, każda instancja twojej apki musi posiadać inne sessionID.
