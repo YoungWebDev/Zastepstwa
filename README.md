@@ -18,6 +18,6 @@ Wiadomości zwrotne: ***0 lub 1***
 
 Łącze: *link/scrape/ **[day]** / **[sessionID]***
 Parametry: ***[day]*** * - 20160416*, ***[sessionID]*** - info na dole
-Wiadomości zwrotne: ***0 lub 1***
+Wiadomości zwrotne: JSON
 
 **sessionID**: Tutaj podajesz jakieś ID, tak aby aplikacja potem wiedziała czy już brałeś dane czy nie z danego telefonu (appki mobilnej). Aby bindowanie zmian działało poprawnie, każda instancja twojej apki musi posiadać inne sessionID.
