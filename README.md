@@ -11,13 +11,13 @@ W przyszłości zamierzam dodać do niego filtrowanie po klasach, czyli załóż
 
 ##### Bindowanie zmian: 
 
-* Łącze: *link/status/* ***[day]*** / ***[sessionID]***
+* Łącze: *http://zastepstwa.esy.es/status/* ***[day]*** / ***[sessionID]***
 * Parametry: ***[day]*** - *20160416*, ***[sessionID]*** - info na dole
 * Wiadomości zwrotne: ***0 lub 1***
 
 ##### Wczytywanie zwolnień: 
 
-* Łącze: *link/scrape/* ***[day]*** / ***[sessionID]***
+* Łącze: *http://zastepstwa.esy.es/scrape/* ***[day]*** / ***[sessionID]***
 * Parametry: ***[day]*** - *20160416*, ***[sessionID]*** - info na dole
 * Wiadomości zwrotne: ***JSON***
 
