@@ -1,0 +1,187 @@
+[{
+    "teacher": "Magdalena Krzemi\u0144ska",
+    "lessons": [{
+        "lekcja": "1",
+        "opis": "J\u0119zyk angielski G33 - Uczniowie przychodz\u0105 p\u00f3\u017aniej",
+        "zastepca": "",
+        "uwagi": ""
+    }, {
+        "lekcja": "2",
+        "opis": "J\u0119zyk angielski G33 - Uczniowie przychodz\u0105 p\u00f3\u017aniej",
+        "zastepca": "",
+        "uwagi": ""
+    }, {
+        "lekcja": "3",
+        "opis": "3 X(1) - J\u0119zyk angielski, 14",
+        "zastepca": "Agnieszka \u0141obejko",
+        "uwagi": ""
+    }, {
+        "lekcja": "4",
+        "opis": "3 X(1) - J\u0119zyk angielski, 14",
+        "zastepca": "Agnieszka \u0141obejko",
+        "uwagi": ""
+    }, {
+        "lekcja": "5",
+        "opis": "1 B - J\u0119zyk angielski, 3",
+        "zastepca": "Mark White",
+        "uwagi": ""
+    }, {
+        "lekcja": "6",
+        "opis": "1 B - J\u0119zyk angielski, 3",
+        "zastepca": "Anna D\u0105bska",
+        "uwagi": ""
+    }, {
+        "lekcja": "7",
+        "opis": "J\u0119zyk angielski G23 - Uczniowie zwolnieni do domu",
+        "zastepca": "",
+        "uwagi": ""
+    }]
+}, {
+    "teacher": "Joanna Lewicka",
+    "lessons": [{
+        "lekcja": "5",
+        "opis": "3 Y - Teatr, 25",
+        "zastepca": "Bart\u0142omiej Proc",
+        "uwagi": "praca w\u0142asna uczni\u00f3w"
+    }, {
+        "lekcja": "6",
+        "opis": "3 Z(1) - Kultura niemiecka, 21",
+        "zastepca": "Katarzyna Kapro\u0144",
+        "uwagi": ""
+    }, {
+        "lekcja": "7",
+        "opis": "3 X - Teatr, 3",
+        "zastepca": "Gabriel Larrotta Florez",
+        "uwagi": "praca w\u0142asna uczni\u00f3w"
+    }, {
+        "lekcja": "9",
+        "opis": "Zaj\u0119cia artystyczne 2b - Uczniowie zwolnieni do domu",
+        "zastepca": "",
+        "uwagi": ""
+    }, {
+        "lekcja": "",
+        "opis": "",
+        "zastepca": "",
+        "uwagi": ""
+    }]
+}, {
+    "teacher": "Aneta Mi\u015bkiewicz",
+    "lessons": [{
+        "lekcja": "1",
+        "opis": "J\u0119zyk angielski G32 - Uczniowie przychodz\u0105 p\u00f3\u017aniej",
+        "zastepca": "",
+        "uwagi": ""
+    }, {
+        "lekcja": "2",
+        "opis": "J\u0119zyk angielski G32 - Uczniowie przychodz\u0105 p\u00f3\u017aniej",
+        "zastepca": "",
+        "uwagi": ""
+    }, {
+        "lekcja": "3",
+        "opis": "2 C(2) - J\u0119zyk angielski, 21",
+        "zastepca": "Agnieszka Janiak",
+        "uwagi": "z\u0142\u0105czenie grup"
+    }, {
+        "lekcja": "4",
+        "opis": "2 C(2) - J\u0119zyk angielski, 25",
+        "zastepca": "Mark White",
+        "uwagi": "z\u0142\u0105czenie grup"
+    }, {
+        "lekcja": "5",
+        "opis": "1 A(2) - J\u0119zyk angielski, 2",
+        "zastepca": "Agnieszka \u0141obejko",
+        "uwagi": "z\u0142\u0105czenie grup"
+    }, {
+        "lekcja": "6",
+        "opis": "1 A(2) - J\u0119zyk angielski, 2",
+        "zastepca": "Mark White",
+        "uwagi": "z\u0142\u0105czenie grup"
+    }, {
+        "lekcja": "",
+        "opis": "",
+        "zastepca": "",
+        "uwagi": ""
+    }]
+}, {
+    "teacher": "Barbara Ostrowska",
+    "lessons": [{
+        "lekcja": "1",
+        "opis": "TOK 2AB - Uczniowie przychodz\u0105 p\u00f3\u017aniej",
+        "zastepca": "",
+        "uwagi": ""
+    }, {
+        "lekcja": "3",
+        "opis": "TOK 2AB - Metodologia i technika uczenia si\u0119, 29",
+        "zastepca": "Tomasz Kalbarczyk",
+        "uwagi": "z\u0142\u0105czenie grup"
+    }, {
+        "lekcja": "",
+        "opis": "",
+        "zastepca": "",
+        "uwagi": ""
+    }]
+}, {
+    "teacher": "Karolina Piechnik",
+    "lessons": [{
+        "lekcja": "8",
+        "opis": "WF 3xy - Wychowanie fizyczne, H3",
+        "zastepca": "Gabriel Larrotta Florez",
+        "uwagi": "z\u0142\u0105czenie grup"
+    }, {
+        "lekcja": "",
+        "opis": "",
+        "zastepca": "",
+        "uwagi": ""
+    }]
+}, {
+    "teacher": "Justyna Stojek",
+    "lessons": [{
+        "lekcja": "1",
+        "opis": "J\u0119zyk angielski 1cdm 3 - Uczniowie przychodz\u0105 p\u00f3\u017aniej",
+        "zastepca": "",
+        "uwagi": ""
+    }, {
+        "lekcja": "2",
+        "opis": "J\u0119zyk angielski 1cdm 3 - Uczniowie przychodz\u0105 p\u00f3\u017aniej",
+        "zastepca": "",
+        "uwagi": ""
+    }, {
+        "lekcja": "4",
+        "opis": "J\u0119zyk angielski 2ab 3 - J\u0119zyk angielski HL, 42",
+        "zastepca": "Gabriel Larrotta Florez",
+        "uwagi": ""
+    }, {
+        "lekcja": "5",
+        "opis": "3 M(5) - J\u0119zyk angielski HL, 31",
+        "zastepca": "Tomasz Siwek",
+        "uwagi": ""
+    }, {
+        "lekcja": "6",
+        "opis": "3 M(5) - J\u0119zyk angielski HL, 31",
+        "zastepca": "Agnieszka \u0141obejko",
+        "uwagi": ""
+    }, {
+        "lekcja": "7",
+        "opis": "J\u0119zyk angielski G21 - Uczniowie zwolnieni do domu",
+        "zastepca": "",
+        "uwagi": ""
+    }, {
+        "lekcja": "8",
+        "opis": "J\u0119zyk angielski G21 - Uczniowie zwolnieni do domu",
+        "zastepca": "",
+        "uwagi": ""
+    }]
+}, {
+    "teacher": "Ma\u0142gorzata Szczurek",
+    "lessons": [{
+        "lekcja": "1",
+        "opis": "1 B(2) - Uczniowie przychodz\u0105 p\u00f3\u017aniej",
+        "zastepca": "",
+        "uwagi": ""
+    }, {
+        "lekcja": "2",
+        "opis": "1 B(2) - Uczniowie przychodz\u0105 p\u00f3\u017aniej",
+        "zastepca": "",
+        "uwagi": ""
+    }]
+}]
