@@ -1,4 +1,4 @@
-# Web scraper v.0.1
+# Web scraper v.0.2
 #### Ogólnie to ten scraper umożliwi ci:
 #### Teraz
 * Wczytanie zastępstw z danego dnia
