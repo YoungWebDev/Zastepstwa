@@ -1,0 +1,18 @@
+.segment {
+        min-height: 400px;
+        z-index: 2;
+}
+
+h1 {
+    padding-top: 20px;
+}
+
+#teachers-boxes {
+    margin-top: 20px
+}
+
+#teacher-name {
+    color: #fda400;
+    text-align: center;
+    font-size: 140%;
+}

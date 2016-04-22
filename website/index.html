@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Zastępstwa</title>
+    <link rel="stylesheet" href="semantic/semantic.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="ui center aligned container">
+        <h1>Zastępstwa</h1>
+        <div class="ui divider"></div>
+        <select id="teachers" class="ui fluid dropdown">
+            <option value="">Nauczyciele</option>
+        </select>
+        <div id="teachers-boxes">
+            <table class="ui celled table">
+                <thead>
+                    <tr>
+                        <th id="teacher-name" colspan="3">
+                            Nauczyciel
+                        </th>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <th>Godzina lekcyjna</th>
+                        <th>Opis</th>
+                        <th>Zastępca</th>
+                    </tr>
+                </thead>
+                <tbody id="lessons">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js
+"></script>
+    <script src="semantic/semantic.min.js"></script>
+    <script src="js/core.js"></script>
+</body>
+
+</html>
