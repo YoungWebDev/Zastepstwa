@@ -23,7 +23,7 @@ W przyszłości zamierzam dodać do niego filtrowanie po klasach, czyli załóż
 
 **sessionID**: Tutaj podajesz jakieś ID, tak aby aplikacja potem wiedziała czy już brałeś dane czy nie z danego telefonu (appki mobilnej). Aby bindowanie zmian działało poprawnie, każda instancja twojej apki musi posiadać inne sessionID.
 
-**classID**: Jeżeli chcesz posortować wyniki po klasie to tutaj wpisujesz kod klasy. Jeżeli nie, musisz wpisać "false". Kody klas poniżej. Opcja w fazie testów, może nie działać prawidłowo. Bazuję na inicjałach nauczycieli.
+**classID**: Jeżeli chcesz posortować wyniki po klasie to tutaj wpisujesz kod klasy. Jeżeli nie, musisz wpisać "false". Kody klas poniżej. Opcja w fazie testów, może nie działać prawidłowo. Bazuję na inicjałach nauczycieli. A no i żeby to sortowanie było wiarygodne to musze parsowac plan i zejść jeszcze poziom niżej. O co mi chodzi, przedmioty dzielone na grupy, nie mają podanych inicjałów nauczycieli w planie. Aby dorwać te inicjały, trzeba by wydobyć linki z planu, później sparsować plan dla danej sali pod kątem danego pola (dzień, lekcja), dopiero w taki sposób jestem w stanie dorwać te inicjały. Trochę mi to zajmię, a stwierdziłem, że sortowanie bez języków, bo one są w grupach, i tak jest w miare spoko.
 
 Kody klas:
 * 1a - 11
