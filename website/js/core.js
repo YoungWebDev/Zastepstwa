@@ -1,3 +1,4 @@
+{
     const api = 'http://localhost:8888/Projekty/Zastepstwa/public/scrape/20160422';
     const $dropdown = $('.ui.dropdown');
     const dropdown   = document.getElementById('teachers');
@@ -63,3 +64,4 @@
     }
 
     download();
+}
