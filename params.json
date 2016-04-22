@@ -1,0 +1,6 @@
+{
+  "name": "Zastepstwa",
+  "tagline": "Web scraper do zastepstw",
+  "body": "# Web scraper v.0.1\r\n#### Ogólnie to ten scraper umożliwi ci:\r\n#### Teraz\r\n* Wczytanie zastępstw z danego dnia\r\n* Bindowanie aplikacji w celu powiadomienia w razie zmian\r\n    \r\n#### W przyszłości\r\nW przyszłości zamierzam dodać do niego filtrowanie po klasach, czyli załóżmy, że jesteś z 1C i chcesz znać zastępstwa tylko, które dotyczą ciebie. Scraper na początku zeskanuje plan danej klasy, zindeksuje nauczycieli i przefiltruje wyniki przez tych nauczycieli.\r\n\r\n#### Wykorzystanie\r\n\r\n##### Bindowanie zmian: \r\n\r\n* Łącze: *http://zastepstwa.esy.es/status/* ***[day]*** / ***[sessionID]***\r\n* Parametry: ***[day]*** - *20160416*, ***[sessionID]*** - info na dole\r\n* Wiadomości zwrotne: ***0 lub 1***\r\n\r\n##### Wczytywanie zwolnień: \r\n\r\n* Łącze: *http://zastepstwa.esy.es/scrape/* ***[day]*** / ***[sessionID]***\r\n* Parametry: ***[day]*** - *20160416*, ***[sessionID]*** - info na dole\r\n* Wiadomości zwrotne: ***JSON***\r\n\r\n**sessionID**: Tutaj podajesz jakieś ID, tak aby aplikacja potem wiedziała czy już brałeś dane czy nie z danego telefonu (appki mobilnej). Aby bindowanie zmian działało poprawnie, każda instancja twojej apki musi posiadać inne sessionID.",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
