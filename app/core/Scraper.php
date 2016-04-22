@@ -5,19 +5,42 @@ namespace app\core;
 class Scraper {
 
     protected $link = "http://atlas.paderewski.lublin.pl/~konwerter/zastepstwa/zastepstwa_{DATE}.html";
+    protected $schedule = "http://www.paderewski.lublin.pl/plany/lic/plany/o{CLASSID}.html";
 
     public function status($date)
     {
 
     }
 
-    public function scrape($date)
+    public function initials($classID)
+    {
+        $link = str_replace("{CLASSID}", $classID, $this->schedule);
+        $s = $this->loadPageHTML($link);
+        $s = explode("class=\"n\"", $s);
+        unset($s[0]);
+        $initials = [];
+        foreach ($s as $record)
+        {
+            $initial = strtolower($record[2] . $record[1]);
+            array_push($initials, $initial);
+        }
+        $initialsUnique = array_unique($initials);
+        return $initialsUnique;
+    }
+
+    public function scrape($date, $classID)
     {
         $link = str_replace("{DATE}", $date, $this->link);
         $html = $this->loadPageHTML($link);
         $html = $this->fetchdata($html, "<TABLE BORDER=0 BORDERCOLOR=black CELLSPACING=0 CELLPADDING=2 style='border-collapse: collapse'>", "</TABLE>");
         $html = $this->initialCleaning($html);
-        $html = $this->thoroughCleaning($html);
+        if ($classID == "false")
+        {
+            $html = $this->thoroughCleaning($html, false);
+        } else {
+            $html = $this->thoroughCleaning($html, $this->initials($classID));
+        }
+
         $json = json_encode($html);
         return $json;
     }
@@ -30,7 +53,7 @@ class Scraper {
         return $scrapedHTML;
     }
 
-    protected function thoroughCleaning($html)
+    protected function thoroughCleaning($html, $initials)
     {
         $TABLE = [];
 
@@ -43,6 +66,12 @@ class Scraper {
             // Oddzielenie nazwy nauczyciela
             $teacher = $t[0];
             unset($t[0]);
+
+            if ($initials !== false)
+            {
+                $teacherInitials = strtolower(explode(" ", $teacher)[0][0] . explode(" ", $teacher)[1][0]);
+                if (! in_array($teacherInitials, $initials)) continue;
+            }
 
             $lessons = [];
 
