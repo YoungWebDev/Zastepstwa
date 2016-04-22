@@ -44,6 +44,8 @@ class Scraper {
             $teacher = $t[0];
             unset($t[0]);
 
+            $lessons = [];
+
             //Pozbycie sie tagu </TR> oraz <TD>
             $t = str_replace("</TR>", "", $t);
             $t = str_replace("<TD>", "", $t);
@@ -58,12 +60,22 @@ class Scraper {
                 $desc = $e[1];
                 $repl = $e[2];
                 $impo = $e[3];
+                //$TABLE[$teacher]
+                //$TABLE[$teacher][$hour]["opis"] = $desc;
+                //$TABLE[$teacher][$hour]["zastepca"] = $repl;
+               // $TABLE[$teacher][$hour]["uwagi"] = $impo;
+                $lesson = [];
+                $lesson["lekcja"] = $hour;
+                $lesson["opis"] = $desc;
+                $lesson["zastepca"] = $repl;
+                $lesson["uwagi"] = $impo;
 
-                $TABLE[$teacher][$hour]["opis"] = $desc;
-                $TABLE[$teacher][$hour]["zastepca"] = $repl;
-                $TABLE[$teacher][$hour]["uwagi"] = $impo;
+                array_push($lessons, $lesson);
+
+                $T["teacher"] = $teacher;
+                $T["lessons"] = $lessons;
             }
-
+            array_push($TABLE, $T);
         }
 
         return $TABLE;
