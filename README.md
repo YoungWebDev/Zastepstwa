@@ -9,16 +9,28 @@ W przyszłości zamierzam dodać do niego filtrowanie po klasach, czyli załóż
 
 #### Wykorzystanie
 
-##### Bindowanie zmian: 
+##### Bindowanie zmian: (Wkrótce)
 
 * Łącze: *http://zastepstwa.esy.es/status/* ***[day]*** / ***[sessionID]***
 * Parametry: ***[day]*** - *20160416*, ***[sessionID]*** - info na dole
 * Wiadomości zwrotne: ***0 lub 1***
 
-##### Wczytywanie zwolnień: 
+##### Wczytywanie zwolnień: (sessionID wkrótce)
 
-* Łącze: *http://zastepstwa.esy.es/scrape/* ***[day]*** / ***[sessionID]***
-* Parametry: ***[day]*** - *20160416*, ***[sessionID]*** - info na dole
+* Łącze: *http://zastepstwa.esy.es/scrape/* ***[day]*** / ***[classID]*** /***[sessionID]***
+* Parametry: ***[day]*** - *20160416*, ***[sessionID]*** - info na dole, ***[classID]*** - info na dole
 * Wiadomości zwrotne: ***JSON***
 
 **sessionID**: Tutaj podajesz jakieś ID, tak aby aplikacja potem wiedziała czy już brałeś dane czy nie z danego telefonu (appki mobilnej). Aby bindowanie zmian działało poprawnie, każda instancja twojej apki musi posiadać inne sessionID.
+
+**classID**: Jeżeli chcesz posortować wyniki po klasie to tutaj wpisujesz kod klasy. Jeżeli nie, musisz wpisać "false". Kody klas poniżej. Opcja w fazie testów, może nie działać prawidłowo. Bazuję na inicjałach nauczycieli.
+
+Kody klas:
+* 1a - 11
+* 1b - 12
+* 1c - 13
+* 1d - 14
+* 1m - 15
+* I tak dalej
+
+**NA RAZIE BEZ SESSION ID, OPCJA JESZCZE NIE DZIAŁA**
