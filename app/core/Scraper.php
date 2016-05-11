@@ -57,54 +57,31 @@ class Scraper {
     {
         $TABLE = [];
 
-        foreach($html as $t)
+        foreach ($html as $teacher)
         {
-            // Usuniecie ostatniego indexu z kazdej tablicy, bo zawsze jest pusty
-            $lastRecord =  sizeof($t) - 1;
-            unset($t[$lastRecord]);
-
-            // Oddzielenie nazwy nauczyciela
-            $teacher = $t[0];
-            unset($t[0]);
-
-            if ($initials !== false)
+          $teachersName = $teacher[0];
+          unset($teacher[0]);
+          $lessons = [];
+          foreach ($teacher as $lesson)
+          {
+            $lesson = str_replace('<TD>', '', $lesson);
+            $lesson = str_replace('</TR>', '', $lesson);
+            $lesson = str_replace('&nbsp;', '', $lesson);
+            $lesson = explode('</TD>', $lesson);
+            if ($lesson[0] !== "")
             {
-                $teacherInitials = strtolower(explode(" ", $teacher)[0][0] . explode(" ", $teacher)[1][0]);
-                if (! in_array($teacherInitials, $initials)) continue;
+              array_push($lessons, [
+                'lekcja'    => $lesson[0],
+                'opis'      => $lesson[1],
+                'zastepca'  => $lesson[2],
+                'uwagi'     => $lesson[3]
+              ]);
             }
-
-            $lessons = [];
-
-            //Pozbycie sie tagu </TR> oraz <TD>
-            $t = str_replace("</TR>", "", $t);
-            $t = str_replace("<TD>", "", $t);
-
-            // Utworzenie wlasciwej struktury danych
-            $separator = "</TD>";
-            foreach ($t as $row)
-            {
-                $e = str_replace("&nbsp;", "", $row);
-                $e = explode($separator, $e);
-                $hour = $e[0];
-                $desc = $e[1];
-                $repl = $e[2];
-                $impo = $e[3];
-                //$TABLE[$teacher]
-                //$TABLE[$teacher][$hour]["opis"] = $desc;
-                //$TABLE[$teacher][$hour]["zastepca"] = $repl;
-               // $TABLE[$teacher][$hour]["uwagi"] = $impo;
-                $lesson = [];
-                $lesson["lekcja"] = $hour;
-                $lesson["opis"] = $desc;
-                $lesson["zastepca"] = $repl;
-                $lesson["uwagi"] = $impo;
-
-                array_push($lessons, $lesson);
-
-                $T["teacher"] = $teacher;
-                $T["lessons"] = $lessons;
-            }
-            array_push($TABLE, $T);
+          }
+          array_push($TABLE, [
+            'teacher' => $teachersName,
+            'lessons' => $lessons
+          ]);
         }
 
         return $TABLE;
