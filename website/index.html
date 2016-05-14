@@ -12,6 +12,12 @@
 <body>
     <div class="ui center aligned container">
         <h1>Zastępstwa</h1>
+        <div class="inline field">
+            <div id="typePicker" class="ui toggle checkbox">
+                <input type="checkbox" tabindex="0" class="hidden">
+                <label>Szukanie po zastępcach</label>
+            </div>
+        </div>
         <div class="ui divider"></div>
         <div id="daysPicker" class="ui large fluid buttons">
             <button onClick="changeDay('yesterday', yesterday)" id="yesterday" class="ui button">Wczoraj</button>
@@ -20,11 +26,13 @@
         </div>
         <div id="loader" class="ui active text large inline loader">Wczytywanie danych</div>
         <div id="warning">
-          <h1>Wybierz dzień</h1>
+            <h1>Wybierz dzień</h1>
         </div>
-        <select id="teachers" class="ui fluid dropdown large">
-            <option value="">Nauczyciele</option>
-        </select>
+        <div id="select">
+          <select id="teachers" class="ui fluid dropdown large">
+              <option value="">Nauczyciele</option>
+          </select>
+        </div>
         <div id="teachers-boxes">
             <table class="ui celled table">
                 <thead>
@@ -38,7 +46,7 @@
                     <tr>
                         <th>Godzina lekcyjna</th>
                         <th>Opis</th>
-                        <th>Zastępca</th>
+                        <th id="zastepca">Zastępca</th>
                     </tr>
                 </thead>
                 <tbody id="lessons">

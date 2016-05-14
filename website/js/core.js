@@ -1,5 +1,5 @@
 {
-    const apiPattern = 'http://zastepstwa.esy.es/scrape/{{DATE}}/false';
+    const apiPattern = 'http://localhost:8888/Projekty/Zastepstwa/public/scrape/{{DATE}}/false';
     const $dropdown = $('.ui.dropdown');
     const dropdown = document.getElementById('teachers');
     const boxes = document.getElementById('teachers-boxes');
@@ -11,9 +11,11 @@
     const tomorrow = document.getElementById('tomorrow');
     const loader = document.getElementById('loader');
     const daysPicker = document.getElementById('daysPicker');
+    const select = document.getElementById('select');
 
-    var storage, api, currentDay, dayInProgress, elInProgress;
+    var storage, api, currentDay, dayInProgress, elInProgress, appMode;
     currentDay = '';
+    appMode = 'normal';
 
     function clearLessons () {
         lessons.innerHTML = "";
@@ -56,14 +58,56 @@
               if (callback != false) callback(day, false, next);
               else {
                 storage = JSON.parse(json);
-                options();
+                $('.selection').show();
+                if (appMode == 'normal') {
+                  options();
+                } else if (appMode == 'alternative') {
+                  useAlternativeStorage();
+                }
                 hideEl(warning);
               }
             } else {
               showEl(warning);
               if (callback != false) callback(day, true, next);
             }
+            hideEl(loader);
+            showEl(daysPicker, 'flex');
         });
+    }
+
+    function useAlternativeStorage () {
+      convertStorageToAlternativeStorage()
+    }
+
+    function convertStorageToAlternativeStorage() {
+      var convertedStorage = [];
+      var teachers = {};
+      storage.forEach(function (obj, key) {
+          var teacher = obj.teacher;
+          obj.lessons.forEach(function (_obj, key) {
+              if (_obj.zastepca != '')
+                if (typeof teachers[_obj.zastepca] != 'object') {
+                  teachers[_obj.zastepca] = {
+                    'teacher': _obj.zastepca,
+                    'lessons': []
+                  };
+                  var zastepca = _obj.zastepca;
+                  _obj.zastepca = teacher;
+                  teachers[zastepca]['lessons'].push(_obj);
+                } else {
+                  var zastepca = _obj.zastepca;
+                  _obj.zastepca = teacher;
+                  teachers[zastepca]['lessons'].push(_obj);
+                }
+          });
+      });
+      // Convert back to array
+      var teachersArr = [];
+      for (let i in teachers) {
+        teachersArr.push(teachers[i]);
+      }
+      storage = teachersArr;
+      options();
     }
 
     function makeOption (key, value) {
@@ -71,18 +115,31 @@
     }
 
     function options () {
-        storage.forEach( function (obj, key) {
-            dropdown.appendChild(makeOption(key, obj.teacher));
-        });
-        initDropdown();
+      destroySelect();
+      var newSelect = makeSelect();
+      newSelect.append(makeOption('', 'Nauczyciele'));
+      storage.forEach( function (obj, key) {
+        newSelect.append(makeOption(key, obj.teacher));
+      });
+      rebuildDropdown(newSelect);
     }
 
-    function initDropdown () {
-        $('.ui.dropdown').dropdown({
-            onChange: function (value, text, $selectedItem) {
-                update(value);
-            }
-        });
+    function destroySelect () {
+      select.innerHTML = '';
+    }
+
+    function makeSelect () {
+      var select = $('<select id="teachers" class="ui fluid dropdown large" />');
+      $('#select').append(select);
+      return select;
+    }
+
+    function rebuildDropdown (newSelect) {
+      newSelect.dropdown({
+          onChange: function (value, text, $selectedItem) {
+              update(value);
+          }
+      });
     }
 
     function showEl (El, type = 'block') {
@@ -138,6 +195,7 @@
     }
 
     function changeDay (day, el) {
+      hideEl(boxes);
       dayInProgress = day;
       elInProgress = el;
       var hash = generateDateHash(day);
@@ -175,6 +233,14 @@
       }
     }
 
+    function changeAppMode(mode) {
+      appMode = mode;
+      hideEl(boxes);
+      showEl(warning);
+      hideEl(dropdown);
+      $('.selection').hide(); // dropdown
+    }
+
     function blockPick (day) {
       window[day].className += ' disabled';
     }
@@ -182,3 +248,17 @@
     daysValidator();
     //changeDay('today', today);
 }
+
+
+// TYMCZASOWE
+
+$('.ui.checkbox').checkbox({
+  onChecked: function () {
+    changeAppMode('alternative');
+    $('#zastepca').text('Zastepstwo za');
+  },
+  onUnchecked: function () {
+    changeAppMode('normal');
+    $('#zastepca').text('Zastępca');
+  }
+});

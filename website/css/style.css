@@ -16,6 +16,11 @@ h1 {
   font-weight: 300;
 }
 
+#typePicker {
+  float: right;
+  margin-top: -40px;
+}
+
 #daysPicker {
   margin-bottom: 10px !important;
 }
@@ -36,4 +41,10 @@ h1 {
 
 .loader {
   margin: 60px 0 !important;
+}
+
+@media (max-width: 610px) {
+  #typePicker {
+    float: none;
+  }
 }
