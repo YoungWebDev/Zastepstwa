@@ -1,5 +1,5 @@
 {
-    const api = 'http://localhost:8888/Projekty/Zastepstwa/public/scrape/20160422';
+    const api = 'http://localhost:8888/Projekty/Zastepstwa/public/scrape/20160422/false';
     const $dropdown = $('.ui.dropdown');
     const dropdown   = document.getElementById('teachers');
     const boxes         = document.getElementById('teachers-boxes');
