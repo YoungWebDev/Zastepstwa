@@ -1,11 +1,19 @@
 {
-    const api = 'http://localhost:8888/Projekty/Zastepstwa/public/scrape/20160422/false';
+    const apiPattern = 'http://zastepstwa.esy.es/scrape/{{DATE}}/false';
     const $dropdown = $('.ui.dropdown');
-    const dropdown   = document.getElementById('teachers');
-    const boxes         = document.getElementById('teachers-boxes');
+    const dropdown = document.getElementById('teachers');
+    const boxes = document.getElementById('teachers-boxes');
     const teacherName = document.getElementById('teacher-name');
     const lessons = document.getElementById('lessons');
-    var storage;
+    const warning = document.getElementById('warning');
+    const yesterday = document.getElementById('yesterday');
+    const today = document.getElementById('today');
+    const tomorrow = document.getElementById('tomorrow');
+    const loader = document.getElementById('loader');
+    const daysPicker = document.getElementById('daysPicker');
+
+    var storage, api, currentDay, dayInProgress, elInProgress;
+    currentDay = '';
 
     function clearLessons () {
         lessons.innerHTML = "";
@@ -25,22 +33,36 @@
         lessons.appendChild(tr);
     }
 
+    function generateApiUrl (date) {
+      api = apiPattern.replace('{{DATE}}', date);
+    }
+
     function changeTeachersName (name) {
         teacherName.innerHTML = name;
     }
 
     function update (value) {
         clearLessons();
+        showEl(boxes);
         changeTeachersName(storage[value].teacher);
         storage[value].lessons.forEach(function (obj) {
             addLesson(obj);
         });
     }
 
-    function download () {
+    function download (callback = false, day, next) {
         $.get(api).done(function (json) {
-            storage = JSON.parse(json);
-            options();
+            if (hideTeachersBoxesIfEmpty(json) == false) {
+              if (callback != false) callback(day, false, next);
+              else {
+                storage = JSON.parse(json);
+                options();
+                hideEl(warning);
+              }
+            } else {
+              showEl(warning);
+              if (callback != false) callback(day, true, next);
+            }
         });
     }
 
@@ -63,5 +85,100 @@
         });
     }
 
-    download();
+    function showEl (El, type = 'block') {
+      El.style.display = type;
+    }
+
+    function hideEl (El) {
+      El.style.display = 'none';
+    }
+
+    function hideTeachersBoxesIfEmpty (json) {
+      if (catchException(json)) {
+        hideEl(boxes);
+        hideEl(dropdown);
+        showEl(warning);
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    function catchException (serverResponse) {
+      return serverResponse.indexOf('Warning') > -1;
+    }
+
+    function generateDateHash (date) {
+      var now, hash;
+      now = new Date();
+      switch (date) {
+        case 'yesterday':
+          hash = new Date(now.setDate(now.getDate() - 1));
+          break;
+        case 'tomorrow':
+          hash = new Date(now.setDate(now.getDate() + 1));
+          break;
+        default:
+          hash = now;
+      }
+      var year, month, day;
+      year = hash.getFullYear().toString()
+      month = hash.getMonth() + 1;
+      month = month < 10 ? '0' + month.toString() : month.toString();
+      day = hash.getDate().toString();
+      return year + month + day;
+    }
+
+    function success () {
+
+    }
+
+    function error () {
+
+    }
+
+    function changeDay (day, el) {
+      dayInProgress = day;
+      elInProgress = el;
+      var hash = generateDateHash(day);
+      generateApiUrl(hash);
+      download();
+    }
+
+    // function init () {
+    //   var hash = generateDateHash(currentDay);
+    //   generateApiUrl(hash);
+    //   download();
+    // }
+
+    function daysValidator (day = 'yesterday', error = false, next = '') {
+      if (error == true) blockPick(day);
+      var hash;
+      switch (next) {
+        case 'today':
+          hash = generateDateHash(next);
+          generateApiUrl(hash);
+          download(daysValidator, next, 'tomorrow');
+          break;
+        case 'tomorrow':
+          hash = generateDateHash(next);
+          generateApiUrl(hash);
+          download(daysValidator, next, 'end');
+        case 'end':
+            hideEl(loader);
+            showEl(daysPicker, 'flex');
+          break;
+        default:
+          hash = generateDateHash(day);
+          generateApiUrl(hash);
+          download(daysValidator, day, 'today');
+      }
+    }
+
+    function blockPick (day) {
+      window[day].className += ' disabled';
+    }
+
+    daysValidator();
+    //changeDay('today', today);
 }

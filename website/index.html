@@ -4,15 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Zastępstwa</title>
-    <link rel="stylesheet" href="css/semantic.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
     <div class="ui center aligned container">
         <h1>Zastępstwa</h1>
         <div class="ui divider"></div>
-        <select id="teachers" class="ui fluid dropdown">
+        <div id="daysPicker" class="ui large fluid buttons">
+            <button onClick="changeDay('yesterday', yesterday)" id="yesterday" class="ui button">Wczoraj</button>
+            <button onClick="changeDay('today', today)" id="today" class="ui button">Dzisiaj</button>
+            <button onClick="changeDay('tomorrow', tomorrow)" id="tomorrow" class="ui button">Jutro</button>
+        </div>
+        <div id="loader" class="ui active text large inline loader">Wczytywanie danych</div>
+        <div id="warning">
+          <h1>Wybierz dzień</h1>
+        </div>
+        <select id="teachers" class="ui fluid dropdown large">
             <option value="">Nauczyciele</option>
         </select>
         <div id="teachers-boxes">
@@ -41,7 +51,7 @@
 
     <script src="https://code.jquery.com/jquery-2.2.3.min.js
 "></script>
-    <script src="js/semantic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.js"></script>
     <script src="js/core.js"></script>
 </body>
 
