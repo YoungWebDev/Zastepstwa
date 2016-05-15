@@ -59,11 +59,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             hideEl(warning);
           }
         } else {
-          showEl(warning);
+          //showEl(warning);
           if (callback != false) callback(day, true, next);
         }
-        hideEl(loader);
-        showEl(daysPicker, 'flex');
+        //hideEl(loader);
+        //showEl(daysPicker, 'flex');
       });
     };
 
@@ -147,7 +147,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       if (catchException(json)) {
         hideEl(boxes);
         hideEl(dropdown);
-        showEl(warning);
+        //showEl(warning);
         return true;
       } else {
         return false;
@@ -216,8 +216,12 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
           generateApiUrl(hash);
           download(daysValidator, next, 'end');
         case 'end':
-          hideEl(loader);
-          showEl(daysPicker, 'flex');
+          setTimeout(function () {
+            hideEl(loader);
+            showEl(typePicker);
+            showEl(daysPicker, 'flex');
+            showEl(warning);
+          }, 150);
           break;
         default:
           hash = generateDateHash(day);
@@ -229,7 +233,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     var changeAppMode = function changeAppMode(mode) {
       appMode = mode;
       hideEl(boxes);
-      showEl(warning);
+      //showEl(warning);
       hideEl(dropdown);
       $('.selection').hide(); // dropdown
     };
@@ -251,6 +255,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     var loader = document.getElementById('loader');
     var daysPicker = document.getElementById('daysPicker');
     var select = document.getElementById('select');
+    var typePicker = document.getElementById('typePicker');
 
     currentDay = '';
     appMode = 'normal';
