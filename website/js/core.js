@@ -226,7 +226,7 @@
         case 'end':
           setTimeout(()=>{
             hideEl(loader);
-            showEl(typePicker);
+            showEl(typePicker, '');
             showEl(daysPicker, 'flex');
             showEl(warning);
           }, 150);
@@ -250,6 +250,7 @@
       window[day].className += ' disabled';
     }
 
+    hideEl(typePicker);
     daysValidator();
     //changeDay('today', today);
 }

@@ -218,7 +218,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         case 'end':
           setTimeout(function () {
             hideEl(loader);
-            showEl(typePicker);
+            showEl(typePicker, '');
             showEl(daysPicker, 'flex');
             showEl(warning);
           }, 150);
@@ -260,6 +260,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     currentDay = '';
     appMode = 'normal';
 
+    hideEl(typePicker);
     daysValidator();
     //changeDay('today', today);
   })();
