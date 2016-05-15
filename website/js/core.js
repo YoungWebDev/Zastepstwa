@@ -12,6 +12,7 @@
     const loader = document.getElementById('loader');
     const daysPicker = document.getElementById('daysPicker');
     const select = document.getElementById('select');
+    const typePicker = document.getElementById('typePicker');
 
     var storage, api, currentDay, dayInProgress, elInProgress, appMode;
     currentDay = '';
@@ -67,11 +68,11 @@
                 hideEl(warning);
               }
             } else {
-              showEl(warning);
+              //showEl(warning);
               if (callback != false) callback(day, true, next);
             }
-            hideEl(loader);
-            showEl(daysPicker, 'flex');
+            //hideEl(loader);
+            //showEl(daysPicker, 'flex');
         });
     }
 
@@ -154,7 +155,7 @@
       if (catchException(json)) {
         hideEl(boxes);
         hideEl(dropdown);
-        showEl(warning);
+        //showEl(warning);
         return true;
       } else {
         return false;
@@ -223,8 +224,12 @@
           generateApiUrl(hash);
           download(daysValidator, next, 'end');
         case 'end':
+          setTimeout(()=>{
             hideEl(loader);
+            showEl(typePicker, '');
             showEl(daysPicker, 'flex');
+            showEl(warning);
+          }, 150);
           break;
         default:
           hash = generateDateHash(day);
@@ -236,7 +241,7 @@
     function changeAppMode(mode) {
       appMode = mode;
       hideEl(boxes);
-      showEl(warning);
+      //showEl(warning);
       hideEl(dropdown);
       $('.selection').hide(); // dropdown
     }
@@ -245,6 +250,7 @@
       window[day].className += ' disabled';
     }
 
+    hideEl(typePicker);
     daysValidator();
     //changeDay('today', today);
 }
